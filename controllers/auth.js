@@ -73,6 +73,7 @@ const googleSignIn = async (req, res) => {
       const data = {
         name,
         email,
+        google: true,
         role: 'USER_ROLE'
       }
       user = new User(data)

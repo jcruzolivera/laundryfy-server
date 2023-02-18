@@ -19,7 +19,10 @@ const UserSchema = new Schema({
     default: true
   },
   password: String,
-  google: Boolean,
+  google: {
+    type: Boolean,
+    default: false
+  },
   role: {
     type: String,
     required: true,
