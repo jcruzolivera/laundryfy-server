@@ -55,6 +55,7 @@ router.delete('/:id', [
 
 //  Add payment
 router.post('/addPayment/:id', [
+  verifyJWT,
   check('id').isMongoId(),
   validateExistingObjectById('Order'),
   check('amount').isNumeric(),
@@ -63,6 +64,7 @@ router.post('/addPayment/:id', [
 
 //  Deliver order
 router.post('/deliverOrder/:id', [
+  verifyJWT,
   check('id').isMongoId(),
   validateExistingObjectById('Order'),
   validate
@@ -70,6 +72,7 @@ router.post('/deliverOrder/:id', [
 
 //  Add line to order
 router.post('/addOrderLine/:id', [
+  verifyJWT,
   check('id').isMongoId(),
   check('product').notEmpty(),
   check('product').isMongoId(),
