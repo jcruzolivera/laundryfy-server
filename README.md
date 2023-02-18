@@ -18,6 +18,9 @@ Laundryfy server app is a the back-end side of Laundryfy. Laundryfy is a web app
 
 You can check for docs <a href="https://documenter.getpostman.com/view/13880545/2s93CHtuM4/" target="_blank">here</a>.
 
+Also, we provided a basic UML Class model for a better understanding of the bussiness workflow:
+![imagen](https://user-images.githubusercontent.com/47878970/219884880-5840515f-b4e2-4cbe-82b7-df29f81de2b4.png)
+
 ## Requirements
 
 * Node
