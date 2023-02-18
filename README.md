@@ -16,6 +16,8 @@ You can see a hosted version of `Laundryfy server app` on <a href="https://launf
 
 Laundryfy server app is a the back-end side of Laundryfy. Laundryfy is a web app for managing your laundry's resources in a very efficient way.
 
+You can check for docs <a href="https://documenter.getpostman.com/view/13880545/2s93CHtuM4/" target="_blank">here</a>.
+
 ## Requirements
 
 * Node 8
