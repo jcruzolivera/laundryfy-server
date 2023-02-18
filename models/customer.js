@@ -7,8 +7,7 @@ const CustomerSchema = new Schema({
     default: Date.now()
   },
   email: {
-    type: String,
-    unique: true
+    type: String
   },
   phone: {
     type: String,
