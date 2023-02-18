@@ -1,12 +1,12 @@
 const { response } = require('express')
 const Pricelist = require('../models/pricelist')
+const PricelistLine = require('../models/pricelistLine')
 const Product = require('../models/product')
 const Customer = require('../models/customer')
 const Order = require('../models/order')
 const StateOrder = require('../models/stateOrder')
 const Role = require('../models/role')
 const OrderLine = require('../models/orderLine')
-const PricelistLine = require('../models/pricelistline')
 
 const validateExistingObjectById = (model = '') => {
   return async (req, res = response, next) => {
