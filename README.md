@@ -63,5 +63,5 @@ Step 3: Run the Docker container locally:
 docker run -p 3000:3000 -d laundryfy-server
 ```
 -----------------------
-Next version updates:
+## Next version updates:
 - Design and implement a better way for modeling payments
