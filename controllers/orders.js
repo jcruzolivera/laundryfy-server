@@ -7,7 +7,7 @@ const ObjectId = require('mongoose').Types.ObjectId
 const Product = require('../models/product')
 const setTotalOrder = require('../helpers/setTotalOrder')
 const Pricelist = require('../models/pricelist')
-const Pricelistline = require('../models/pricelistline')
+const Pricelistline = require('../models/pricelistLine')
 const { default: mongoose } = require('mongoose')
 
 const getOrders = async (req, res = response) => {

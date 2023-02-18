@@ -1,7 +1,7 @@
 const { response } = require('express')
 const { ObjectId } = require('mongoose').Types
 const Pricelist = require('../models/pricelist')
-const PricelistLine = require('../models/pricelistline')
+const PricelistLine = require('../models/pricelistLine')
 const Product = require('../models/product')
 const validatePricelistLine = require('../helpers/validatePricelistLine')
 
