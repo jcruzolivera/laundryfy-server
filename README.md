@@ -20,7 +20,7 @@ You can check for docs <a href="https://documenter.getpostman.com/view/13880545/
 
 ## Requirements
 
-* Node 8
+* Node
 * Git
 
 ## Common setup
