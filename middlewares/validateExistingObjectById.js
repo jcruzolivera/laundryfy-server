@@ -1,4 +1,3 @@
-const { response } = require('express')
 const Pricelist = require('../models/pricelist')
 const PricelistLine = require('../models/pricelistLine')
 const Product = require('../models/product')
@@ -9,7 +8,7 @@ const Role = require('../models/role')
 const OrderLine = require('../models/orderLine')
 
 const validateExistingObjectById = (model = '') => {
-  return async (req, res = response, next) => {
+  return async (req, res, next) => {
     try {
       const { id } = req.params
       let obj
