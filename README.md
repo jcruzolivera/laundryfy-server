@@ -65,3 +65,4 @@ docker run -p 3000:3000 -d laundryfy-server
 -----------------------
 ## Next version updates:
 - Design and implement a better way for modeling payments
+- Migrate users authentication to FusionAuth
