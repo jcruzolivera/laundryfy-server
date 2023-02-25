@@ -1,9 +1,9 @@
-const { Router } = require('express')
-const { check } = require('express-validator')
-const { validate } = require('../middlewares/validator')
+const { Router } = require('express');
+const { check } = require('express-validator');
+const { validate } = require('../middlewares/validator');
 const {
   notExistsPricelist
-} = require('../helpers/db-validator')
+} = require('../helpers/db-validator');
 
 const {
   getPricelists,
@@ -13,14 +13,14 @@ const {
   deletePricelist,
   addPricelistLine,
   removePricelistLine
-} = require('../controllers/pricelists')
-const { validateExistingObjectById } = require('../middlewares/validateExistingObjectById')
-const verifyJWT = require('../middlewares/verifyJWT')
+} = require('../controllers/pricelists');
+const { validateExistingObjectById } = require('../middlewares/validateExistingObjectById');
+const verifyJWT = require('../middlewares/verifyJWT');
 
-const router = Router()
+const router = Router();
 
 //  Get all pricelists
-router.get('/', verifyJWT, getPricelists)
+router.get('/', verifyJWT, getPricelists);
 
 //  Get a pricelist by id
 router.get('/:id', [
@@ -28,7 +28,7 @@ router.get('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('Pricelist'),
   validate
-], getPricelistById)
+], getPricelistById);
 
 //  Create a new pricelist
 router.post('/', [
@@ -38,7 +38,7 @@ router.post('/', [
   check('end_validity').notEmpty(),
   check('name').custom(notExistsPricelist),
   validate
-], createPricelist)
+], createPricelist);
 
 //  Update an existing pricelist
 router.put('/:id', [
@@ -46,7 +46,7 @@ router.put('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('Pricelist'),
   validate
-], updatePricelist)
+], updatePricelist);
 
 //  Delete a pricelist
 router.delete('/:id', [
@@ -54,7 +54,7 @@ router.delete('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('Pricelist'),
   validate
-], deletePricelist)
+], deletePricelist);
 
 //  Add new pricelist line
 router.post('/addPricelistLine/:id', [
@@ -64,7 +64,7 @@ router.post('/addPricelistLine/:id', [
   check('product').isMongoId(),
   validateExistingObjectById('Pricelist'),
   validate
-], addPricelistLine)
+], addPricelistLine);
 
 //  Remove line to pricelist
 router.post('/removePricelistLine/:id', [
@@ -72,6 +72,6 @@ router.post('/removePricelistLine/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('PricelistLine'),
   validate
-], removePricelistLine)
+], removePricelistLine);
 
-module.exports = router
+module.exports = router;

@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const OrderLineSchema = new Schema({
   quantity: Number,
@@ -13,6 +13,6 @@ const OrderLineSchema = new Schema({
     required: true
   },
   subtotal: Number
-})
+});
 
-module.exports = model('OrderLine', OrderLineSchema)
+module.exports = model('OrderLine', OrderLineSchema);

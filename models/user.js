@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const UserSchema = new Schema({
   name: String,
@@ -29,6 +29,6 @@ const UserSchema = new Schema({
     enum: ['ADMIN_ROLE', 'USER_ROLE'],
     default: 'USER_ROLE'
   }
-})
+});
 
-module.exports = model('User', UserSchema)
+module.exports = model('User', UserSchema);

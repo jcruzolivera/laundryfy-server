@@ -1,15 +1,15 @@
-const Order = require('../models/order')
+const Order = require('../models/order');
 
 const setTotalOrder = async (id) => {
-  const order = await Order.findById(id)
-  let total = 0
+  const order = await Order.findById(id);
+  let total = 0;
 
   for (const line of order.orderLines) {
-    total += line.subtotal
+    total += line.subtotal;
   }
 
-  order.total = total
-  order.save()
-}
+  order.total = total;
+  order.save();
+};
 
-module.exports = setTotalOrder
+module.exports = setTotalOrder;

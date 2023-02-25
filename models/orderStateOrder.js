@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const OrderStateOrderSchema = new Schema({
   date_issue: {
@@ -16,6 +16,6 @@ const OrderStateOrderSchema = new Schema({
     required: true
   },
   description: String
-})
+});
 
-module.exports = model('OrderStateOrder', OrderStateOrderSchema)
+module.exports = model('OrderStateOrder', OrderStateOrderSchema);

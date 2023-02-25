@@ -1,29 +1,29 @@
-const { Router } = require('express')
-const { check } = require('express-validator')
-const { validate } = require('../middlewares/validator')
+const { Router } = require('express');
+const { check } = require('express-validator');
+const { validate } = require('../middlewares/validator');
 
-const { login, register, googleSignIn } = require('../controllers/auth')
+const { login, register, googleSignIn } = require('../controllers/auth');
 
-const router = Router()
+const router = Router();
 
 //  Login user
 router.post('/login',
   check('email').isEmail(),
   check('password').notEmpty(),
   validate
-  , login)
+  , login);
 
 //  Register user
 router.post('/register',
   check('email').isEmail(),
   check('password').notEmpty(),
   validate
-  , register)
+  , register);
 
 //  Register or login user by google
 router.post('/google',
   check('token').notEmpty(),
   validate
-  , googleSignIn)
+  , googleSignIn);
 
-module.exports = router
+module.exports = router;

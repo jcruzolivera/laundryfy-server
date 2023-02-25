@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const StateOrderSchema = new Schema({
   name: {
@@ -9,6 +9,6 @@ const StateOrderSchema = new Schema({
     type: Boolean,
     default: true
   }
-})
+});
 
-module.exports = model('StateOrder', StateOrderSchema)
+module.exports = model('StateOrder', StateOrderSchema);

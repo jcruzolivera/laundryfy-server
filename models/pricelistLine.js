@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const PricelistLineSchema = new Schema({
   pricelist: {
@@ -12,6 +12,6 @@ const PricelistLineSchema = new Schema({
     required: true
   },
   price: Number
-})
+});
 
-module.exports = model('PricelistLine', PricelistLineSchema)
+module.exports = model('PricelistLine', PricelistLineSchema);

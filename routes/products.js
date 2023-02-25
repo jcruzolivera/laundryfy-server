@@ -1,7 +1,7 @@
-const { Router } = require('express')
-const { check } = require('express-validator')
-const { validateExistingObjectById } = require('../middlewares/validateExistingObjectById')
-const { notExistsProduct } = require('../helpers/db-validator')
+const { Router } = require('express');
+const { check } = require('express-validator');
+const { validateExistingObjectById } = require('../middlewares/validateExistingObjectById');
+const { notExistsProduct } = require('../helpers/db-validator');
 
 const {
   getProducts,
@@ -9,14 +9,14 @@ const {
   createProduct,
   updateProduct,
   deleteProduct
-} = require('../controllers/products')
-const { validate } = require('../middlewares/validator')
-const verifyJWT = require('../middlewares/verifyJWT')
+} = require('../controllers/products');
+const { validate } = require('../middlewares/validator');
+const verifyJWT = require('../middlewares/verifyJWT');
 
-const router = Router()
+const router = Router();
 
 //  Get all products
-router.get('/', verifyJWT, getProducts)
+router.get('/', verifyJWT, getProducts);
 
 //  Get a product by ID
 router.get('/:id', [
@@ -24,7 +24,7 @@ router.get('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('Product'),
   validate
-], getProductById)
+], getProductById);
 
 //  Create a new product
 router.post('/', [
@@ -32,7 +32,7 @@ router.post('/', [
   check('name').notEmpty(),
   check('name').custom(notExistsProduct),
   validate
-], createProduct)
+], createProduct);
 
 //  Update an exsting product
 router.put('/:id', [
@@ -40,7 +40,7 @@ router.put('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('Product'),
   validate
-], updateProduct)
+], updateProduct);
 
 //  Delete a product
 router.delete('/:id', [
@@ -48,6 +48,6 @@ router.delete('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('Product'),
   validate
-], deleteProduct)
+], deleteProduct);
 
-module.exports = router
+module.exports = router;

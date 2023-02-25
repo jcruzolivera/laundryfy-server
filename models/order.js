@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const OrderSchema = new Schema({
   name: String,
@@ -31,6 +31,6 @@ const OrderSchema = new Schema({
     ref: 'orderLine'
   }],
   total: Number
-})
+});
 
-module.exports = model('Order', OrderSchema)
+module.exports = model('Order', OrderSchema);

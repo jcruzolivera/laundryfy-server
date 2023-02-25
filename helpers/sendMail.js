@@ -1,22 +1,22 @@
 
-const nodemailer = require('nodemailer')
+const nodemailer = require('nodemailer');
 
 const avaibleMailSubjects = {
   orderDelivered: 'Order delivered'
-}
+};
 
 const sendMail = async (subject = '') => {
   try {
-    const mailSubjectsKeys = Object.keys(avaibleMailSubjects)
+    const mailSubjectsKeys = Object.keys(avaibleMailSubjects);
 
     if (!mailSubjectsKeys.includes(subject)) {
       return {
         error: true,
         msg: 'Email subject not allowed'
-      }
+      };
     }
 
-    const testAccount = await nodemailer.createTestAccount()
+    const testAccount = await nodemailer.createTestAccount();
 
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
@@ -27,7 +27,7 @@ const sendMail = async (subject = '') => {
         user: testAccount.user, // generated ethereal user
         pass: testAccount.pass // generated ethereal password
       }
-    })
+    });
 
     // send mail with defined transport object
     const info = await transporter.sendMail({
@@ -36,15 +36,17 @@ const sendMail = async (subject = '') => {
       subject: 'Hello ✔', // Subject line
       text: 'Hello world?', // plain text body
       html: '<b>Hello world?</b>' // html body
-    })
+    });
+
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
     if (info.messageId) {
-      console.log(info.messageId)
-      return true
+      console.log(info.messageId);
+      return true;
     }
   } catch (error) {
-    throw new Error(error.message)
+    throw new Error(error.message);
   }
-}
+};
 
-module.exports = sendMail
+module.exports = sendMail;

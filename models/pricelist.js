@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const PricelistSchema = new Schema({
   name: String,
@@ -22,6 +22,6 @@ const PricelistSchema = new Schema({
     ref: 'PricelistLine'
   }]
 
-})
+});
 
-module.exports = model('Pricelist', PricelistSchema)
+module.exports = model('Pricelist', PricelistSchema);

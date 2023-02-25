@@ -1,21 +1,21 @@
-const { Router } = require('express')
-const { check } = require('express-validator')
-const { validate } = require('../middlewares/validator')
-const { validateExistingObjectById } = require('../middlewares/validateExistingObjectById')
-const { notExistsCustomerByName, notExistsCustomerByPhone } = require('../helpers/db-validator')
+const { Router } = require('express');
+const { check } = require('express-validator');
+const { validate } = require('../middlewares/validator');
+const { validateExistingObjectById } = require('../middlewares/validateExistingObjectById');
+const { notExistsCustomerByName, notExistsCustomerByPhone } = require('../helpers/db-validator');
 const {
   getCustomers,
   getCustomerById,
   createCustomer,
   updateCustomer,
   deleteCustomer
-} = require('../controllers/customers')
-const verifyJWT = require('../middlewares/verifyJWT')
+} = require('../controllers/customers');
+const verifyJWT = require('../middlewares/verifyJWT');
 
-const router = Router()
+const router = Router();
 
 //  Get all customers
-router.get('/', verifyJWT, getCustomers)
+router.get('/', verifyJWT, getCustomers);
 
 //  Get a customer by id
 router.get('/:id', [
@@ -23,7 +23,7 @@ router.get('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('Customer'),
   validate
-], getCustomerById)
+], getCustomerById);
 
 //  Create a new customer
 router.post('/', [
@@ -33,7 +33,7 @@ router.post('/', [
   check('phone').notEmpty(),
   check('phone').custom(notExistsCustomerByPhone),
   validate
-], createCustomer)
+], createCustomer);
 
 //  Update an existing customer
 router.put('/:id', [
@@ -41,7 +41,7 @@ router.put('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('Customer'),
   validate
-], updateCustomer)
+], updateCustomer);
 
 //  Delete a customer
 router.delete('/:id', [
@@ -49,6 +49,6 @@ router.delete('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('Customer'),
   validate
-], deleteCustomer)
+], deleteCustomer);
 
-module.exports = router
+module.exports = router;

@@ -1,23 +1,23 @@
-const { ObjectId } = require('mongoose').Types
-const Product = require('../models/product')
+const { ObjectId } = require('mongoose').Types;
+const Product = require('../models/product');
 
 const validatePricelistLine = async (product, price) => {
   try {
     if (price < 0) {
-      return false
+      return false;
     }
-    product = ObjectId(product)
+    product = ObjectId(product);
 
-    const productExists = await Product.findOne({ active: true, _id: product })
+    const productExists = await Product.findOne({ active: true, _id: product });
 
     if (!productExists) {
-      return false
+      return false;
     }
 
-    return true
+    return true;
   } catch {
-    return false
+    return false;
   }
-}
+};
 
-module.exports = validatePricelistLine
+module.exports = validatePricelistLine;

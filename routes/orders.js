@@ -1,7 +1,7 @@
-const { Router } = require('express')
-const { check } = require('express-validator')
-const verifyJWT = require('../middlewares/verifyJWT')
-const { notExistsOrder } = require('../helpers/db-validator')
+const { Router } = require('express');
+const { check } = require('express-validator');
+const verifyJWT = require('../middlewares/verifyJWT');
+const { notExistsOrder } = require('../helpers/db-validator');
 const {
   getOrders,
   getOrderById,
@@ -12,14 +12,14 @@ const {
   deliverOrder,
   addOrderLine,
   removeOrderLine
-} = require('../controllers/orders')
-const { validateExistingObjectById } = require('../middlewares/validateExistingObjectById')
-const { validate } = require('../middlewares/validator')
+} = require('../controllers/orders');
+const { validateExistingObjectById } = require('../middlewares/validateExistingObjectById');
+const { validate } = require('../middlewares/validator');
 
-const router = Router()
+const router = Router();
 
 //  Get all orders
-router.get('/', verifyJWT, getOrders)
+router.get('/', verifyJWT, getOrders);
 
 //  Get one order with id
 router.get('/:id', [
@@ -27,7 +27,7 @@ router.get('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('Order'),
   validate
-], getOrderById)
+], getOrderById);
 
 //  Create a new order
 router.post('/', [
@@ -35,7 +35,7 @@ router.post('/', [
   check('customer').isMongoId(),
   check('name').custom(notExistsOrder),
   validate
-], createOrder)
+], createOrder);
 
 //  Update an existing order
 router.put('/:id', [
@@ -43,7 +43,7 @@ router.put('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('Order'),
   validate
-], updateOrder)
+], updateOrder);
 
 //  Delete or archive an order
 router.delete('/:id', [
@@ -51,7 +51,7 @@ router.delete('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('Order'),
   validate
-], deleteOrder)
+], deleteOrder);
 
 //  Add payment
 router.post('/addPayment/:id', [
@@ -60,7 +60,7 @@ router.post('/addPayment/:id', [
   validateExistingObjectById('Order'),
   check('amount').isNumeric(),
   validate
-], addOrderPayment)
+], addOrderPayment);
 
 //  Deliver order
 router.post('/deliverOrder/:id', [
@@ -68,7 +68,7 @@ router.post('/deliverOrder/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('Order'),
   validate
-], deliverOrder)
+], deliverOrder);
 
 //  Add line to order
 router.post('/addOrderLine/:id', [
@@ -78,7 +78,7 @@ router.post('/addOrderLine/:id', [
   check('product').isMongoId(),
   validateExistingObjectById('Order'),
   validate
-], addOrderLine)
+], addOrderLine);
 
 //  Remove line to order
 router.post('/removeOrderLine/:id', [
@@ -86,6 +86,6 @@ router.post('/removeOrderLine/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('OrderLine'),
   validate
-], removeOrderLine)
+], removeOrderLine);
 
-module.exports = router
+module.exports = router;

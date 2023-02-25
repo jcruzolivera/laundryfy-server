@@ -1,26 +1,26 @@
-const { Router } = require('express')
-const { check } = require('express-validator')
-const { validate } = require('../middlewares/validator')
-const { validateExistingObjectById } = require('../middlewares/validateExistingObjectById')
-const verifyJWT = require('../middlewares/verifyJWT')
-const validateRole = require('../middlewares/validateRole')
+const { Router } = require('express');
+const { check } = require('express-validator');
+const { validate } = require('../middlewares/validator');
+const { validateExistingObjectById } = require('../middlewares/validateExistingObjectById');
+const verifyJWT = require('../middlewares/verifyJWT');
+const validateRole = require('../middlewares/validateRole');
 const {
   getUsers,
   getUserById,
   createUser,
   updateUser,
   deleteUser
-} = require('../controllers/users')
-const { notExistsUser } = require('../helpers/db-validator')
+} = require('../controllers/users');
+const { notExistsUser } = require('../helpers/db-validator');
 
-const router = Router()
+const router = Router();
 
 //  Get all users
 router.get('/', [
   verifyJWT,
   validateRole('ADMIN_ROLE'),
   validate
-], getUsers)
+], getUsers);
 
 //  Get a user by id
 router.get('/:id', [
@@ -29,7 +29,7 @@ router.get('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('User'),
   validate
-], getUserById)
+], getUserById);
 
 //  Create a new user
 router.post('/', [
@@ -41,7 +41,7 @@ router.post('/', [
   check('name').notEmpty(),
   check('phone').notEmpty(),
   validate
-], createUser)
+], createUser);
 
 //  Update an existing user
 router.put('/:id', [
@@ -50,7 +50,7 @@ router.put('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('User'),
   validate
-], updateUser)
+], updateUser);
 
 //  Delete a user
 router.delete('/:id', [
@@ -59,6 +59,6 @@ router.delete('/:id', [
   check('id').isMongoId(),
   validateExistingObjectById('User'),
   validate
-], deleteUser)
+], deleteUser);
 
-module.exports = router
+module.exports = router;
