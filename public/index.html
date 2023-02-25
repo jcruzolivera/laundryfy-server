@@ -35,7 +35,7 @@
                const body = {
                 token: response.credential
                }
-               const url = "https://launfryfy-server.onrender.com/api/auth/google"
+               const url = "http://localhost:3000/api/auth/google" //  "https://launfryfy-server.onrender.com/api/auth/google"
 
                fetch(url, {
                 method: 'POST',
@@ -47,6 +47,7 @@
                     .then(res => res.json())
                     .then(res =>{
                         localStorage.setItem('email', res.user.email);
+                        console.log(res)
                     })
                     .catch(err => console.log('error', err))
             }

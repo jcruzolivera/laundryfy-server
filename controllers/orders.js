@@ -9,6 +9,7 @@ const setTotalOrder = require('../helpers/setTotalOrder')
 const Pricelist = require('../models/pricelist')
 const Pricelistline = require('../models/pricelistLine')
 const { default: mongoose } = require('mongoose')
+const sendMail = require('../helpers/sendMail')
 
 const getOrders = async (req, res = response) => {
   try {
@@ -299,6 +300,8 @@ const deliverOrder = async (req, res) => {
     order.delivered = true
     order.date_delivered = new Date().getDate()
     await order.save()
+
+    sendMail('orderDelivered')
 
     return res.json({
       msg: 'Order delivered successfully',
