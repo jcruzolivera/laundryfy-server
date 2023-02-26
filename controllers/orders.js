@@ -301,7 +301,11 @@ const deliverOrder = async (req, res) => {
     order.date_delivered = new Date().getDate();
     await order.save();
 
-    sendMail('orderDelivered');
+    const customer = (await order.populate('customer')).customer;
+
+    if (customer.email) {
+      sendMail('orderDelivered');
+    }
 
     return res.json({
       msg: 'Order delivered successfully',
